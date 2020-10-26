@@ -22,6 +22,8 @@ let transactions = localStorage.getItem('transactions') !== null ? localStorageT
 function addTransaction(e) {
     e.preventDefault()
 
+// This is how to add a alert properly instead of my on click alert
+
     if(text.value.trim() === '' || amount.value.trim() === '') {
         alert('Please add text and amount')
     } else {
@@ -36,5 +38,5 @@ function addTransaction(e) {
 // Generate Id
 
 function generateId() {
-    
+    return Math.floor(Math.random() * 10000000)
 }
