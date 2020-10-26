@@ -45,3 +45,20 @@ function addTransaction(e) {
 function generateId() {
     return Math.floor(Math.random() * 10000000)
 }
+
+//Add transaction to the list 
+
+function addTransactionList(transaction) {
+    const sign = transaction < 0 ? '-' : '+'
+    
+    //Get sign
+    
+    const item = document.createElement('li') 
+
+    //Add a class based on the value of the amount
+
+    item.classList.add(transaction.amount < 0 ? 'minus' : 'plus')
+
+    item.innerHTML = `${transaxtion.text} <span>${sign}${Math.abs(transaction.amount)}</span>`
+
+}
