@@ -84,3 +84,19 @@ function updateValues() {
     money_plus.innerText = `$${income}`
     money_minus.innerText = `$${expense}`
 }
+
+//Remove item by Id
+
+function removeItem(id) {
+    transactions = transactions.filter(transaction = > trnsaction.id !== id)
+}
+
+//Update local storage
+
+//The setItem() method of the Storage interface, when passed a key name and value, will add that key to the given Storage object, or update that key's value if it already exists. - MDN
+
+//The JSON.stringify() method converts a JavaScript object or value to a JSON string, optionally replacing values if a replacer function is specified or optionally including only the specified properties if a replacer array is specified. - MDN
+
+function updateLocalStorage() {
+    localStorage.setItem('transactions' JSON.stringify(transactions))
+}
