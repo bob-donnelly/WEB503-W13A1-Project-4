@@ -33,6 +33,11 @@ function addTransaction(e) {
             amount: +amount.value,
         }
         transactions.push(transaction)
+
+        addTransactionList(transaction)
+
+        updateValues ()
+        updateLocalStorage ()
     }
 }
 
@@ -88,7 +93,7 @@ function updateValues() {
 //Remove item by Id
 
 function removeItem(id) {
-    transactions = transactions.filter(transaction = > trnsaction.id !== id)
+    transactions = transactions.filter(transaction => trnsaction.id !== id)
 }
 
 //Update local storage
@@ -98,5 +103,18 @@ function removeItem(id) {
 //The JSON.stringify() method converts a JavaScript object or value to a JSON string, optionally replacing values if a replacer function is specified or optionally including only the specified properties if a replacer array is specified. - MDN
 
 function updateLocalStorage() {
-    localStorage.setItem('transactions' JSON.stringify(transactions))
+    localStorage.setItem('transactions', JSON.stringify(transactions))
 }
+
+//init app
+
+function init() {
+    list.innerHTML = ''
+
+    transactions.forEach(addTransactionList) 
+
+    updateValues ()
+}
+
+//Add transaction
+form.addEventListener('submit, addTransaction')
