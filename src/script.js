@@ -38,6 +38,9 @@ function addTransaction(e) {
 
         updateValues ()
         updateLocalStorage ()
+
+        text.value = ''
+        amount.value = ''
     }
 }
 
@@ -92,8 +95,12 @@ function updateValues() {
 
 //Remove item by Id
 
-function removeItem(id) {
+function removeItem(id) { 
     transactions = transactions.filter(transaction => trnsaction.id !== id)
+
+    updateLocalStorage()
+
+    init()
 }
 
 //Update local storage
