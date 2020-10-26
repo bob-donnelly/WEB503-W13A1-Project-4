@@ -59,6 +59,8 @@ function addTransactionList(transaction) {
 
     item.classList.add(transaction.amount < 0 ? 'minus' : 'plus')
 
-    item.innerHTML = `${transaxtion.text} <span>${sign}${Math.abs(transaction.amount)}</span>`
+    item.innerHTML = `${transaxtion.text} <span>${sign}${Math.abs(transaction.amount)}</span>
+    <button class="delete-btn" onclick="removeItem(${transaction.id})">x</button>`
 
+    list.appendChild(item)
 }
