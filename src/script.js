@@ -30,7 +30,7 @@ function addTransaction(e) {
         const transaction = {
             id: generateId(),
             text: text.value,
-            amount: +amount.value,
+            amount: +amount.value
         }
         transactions.push(transaction)
 
