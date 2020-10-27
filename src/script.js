@@ -30,7 +30,7 @@ function addTransaction(e) {
         const transaction = {
             id: generateId(),
             text: text.value,
-            amount: +amount.value
+            amount: +amount.value,
         }
         transactions.push(transaction)
 
@@ -51,13 +51,13 @@ function addTransaction(e) {
 //The Math.random() function returns a floating-point, pseudo-random number in the range 0 to less than 1 (inclusive of 0, but not 1) with approximately uniform distribution over that range — which you can then scale to your desired range. The implementation selects the initial seed to the random number generation algorithm; it cannot be chosen or reset by the user. - MDN
 
 function generateId() {
-    return Math.floor(Math.random() * 10000000)
+    return Math.floor(Math.random() * 100000000)
 }
 
 //Add transaction to the list 
 
 function addTransactionList(transaction) {
-    const sign = transaction < 0 ? '-' : '+'
+    const sign = transaction.amount < 0 ? '-' : '+'
     
     //Get sign
     
@@ -67,8 +67,8 @@ function addTransactionList(transaction) {
 
     item.classList.add(transaction.amount < 0 ? 'minus' : 'plus')
 
-    item.innerHTML = `${transaxtion.text} <span>${sign}${Math.abs(transaction.amount)}</span>
-    <button class="delete-btn" onclick="removeItem(${transaction.id})">x</button>`
+    item.innerHTML = ` ${transaction.text} <span>${sign}${Math.abs(transaction.amount)}</span>
+    <button class="delete-btn" onclick="removeItem(${transaction.id})">x</button> `
 
     list.appendChild(item)
 }
@@ -76,7 +76,7 @@ function addTransactionList(transaction) {
 //Update total cart
 
 function updateValues() {
-    const amount = transactions.map(transaction => transaction.amount)
+    const amounts = transactions.map(transaction => transaction.amount)
 
     const total = amounts.reduce((acc, item) => (acc += item), 0).toFixed(2)
 
@@ -84,9 +84,9 @@ function updateValues() {
 
     .reduce((acc, item) => (acc +- item), 0).toFixed(2)
 
-    const expense = amounts .filter(item => item < 0)
-
-    .reduce((acc, item) => (acc += item, 0) * -1).toFixed(2)
+    const expense = (amounts
+        .filter(item => item < 0)
+        .reduce((acc, item) => (acc += item), 0) * -1).toFixed(2)
 
     balance.innerText = `$${total}`
     money_plus.innerText = `$${income}`
@@ -96,7 +96,7 @@ function updateValues() {
 //Remove item by Id
 
 function removeItem(id) { 
-    transactions = transactions.filter(transaction => trnsaction.id !== id)
+    transactions = transactions.filter(transaction => transaction.id !== id)
 
     updateLocalStorage()
 
@@ -123,5 +123,8 @@ function init() {
     updateValues ()
 }
 
+init()
+
 //Add transaction
+
 form.addEventListener('submit, addTransaction')
