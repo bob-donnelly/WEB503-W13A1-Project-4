@@ -19,12 +19,12 @@ let transactions = localStorage.getItem('transactions') !== null ? localStorageT
 
 //Add transaction // 
 
-function addTransaction(e) {
+function addTransaction(e){
     e.preventDefault()
 
 // This is how to add a alert properly instead of my on click alert
 
-    if(text.value.trim() === '' || amount.value.trim() === '') {
+    if(text.value.trim() === '' || amount.value.trim() === ''){
         alert('Please add text and amount')
     } else {
         const transaction = {
@@ -50,13 +50,13 @@ function addTransaction(e) {
 
 //The Math.random() function returns a floating-point, pseudo-random number in the range 0 to less than 1 (inclusive of 0, but not 1) with approximately uniform distribution over that range — which you can then scale to your desired range. The implementation selects the initial seed to the random number generation algorithm; it cannot be chosen or reset by the user. - MDN
 
-function generateId() {
+function generateId(){
     return Math.floor(Math.random() * 100000000)
 }
 
 //Add transaction to the list 
 
-function addTransactionList(transaction) {
+function addTransactionList(transaction){
     const sign = transaction.amount < 0 ? '-' : '+'
     
     //Get sign
@@ -75,7 +75,7 @@ function addTransactionList(transaction) {
 
 //Update total cart
 
-function updateValues() {
+function updateValues(){
     const amounts = transactions.map(transaction => transaction.amount)
 
     const total = amounts.reduce((acc, item) => (acc += item), 0).toFixed(2)
@@ -95,7 +95,7 @@ function updateValues() {
 
 //Remove item by Id
 
-function removeItem(id) { 
+function removeItem(id){ 
     transactions = transactions.filter(transaction => transaction.id !== id)
 
     updateLocalStorage()
@@ -109,13 +109,13 @@ function removeItem(id) {
 
 //The JSON.stringify() method converts a JavaScript object or value to a JSON string, optionally replacing values if a replacer function is specified or optionally including only the specified properties if a replacer array is specified. - MDN
 
-function updateLocalStorage() {
+function updateLocalStorage(){
     localStorage.setItem('transactions', JSON.stringify(transactions))
 }
 
 //init app
 
-function init() {
+function init(){
     list.innerHTML = ''
 
     transactions.forEach(addTransactionList) 
